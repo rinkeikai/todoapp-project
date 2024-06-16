@@ -60,3 +60,22 @@
         die('処理に失敗しました');
     }
     ?>
+
+<?php foreach ($dataList as $data) : ?>
+        <div class="group">
+            <p><?php echo $data['todo']; ?></p>
+            <p><?php echo $data['tododate']; ?></p>
+            <form id='del' action='del.php' method='post'>
+                <input class="del-btn" type='submit' value='削除' />
+                <input type='hidden' name='del' value='<?php echo $data['id']; ?>' />
+            </form>
+            <form id='update' action='update.php' method='post'>
+                <input class="edit-btn" type='submit' value='編集' />
+                <input type='hidden' name='update' value='<?php echo $data['id']; ?>' />
+            </form>
+        </div>
+        <br>
+    <?php endforeach ?>
+</body>
+
+</html>
